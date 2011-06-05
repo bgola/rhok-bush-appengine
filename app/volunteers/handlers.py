@@ -16,12 +16,16 @@ from werkzeug import cached_property
 from wtforms.form import WebobInputWrapper
 
 from forms import ProfileForm
-from models import Profile
+from models import *
 
 class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
         """Simply returns a Response object with an enigmatic salutation."""
-        return self.render_response('index.html', form=self.form)
+        recent_actions = [ {'when': a.when, 
+                            'name':a.name, 
+                            'what': a.what } 
+                           for a in Action.all().order('-when').fetch(10) ]
+        return self.render_response('index.html', form = self.form, recent_actions = recent_actions)
 
     def post(self, **kwargs):
         if self.form.validate():
@@ -32,6 +36,8 @@ class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
                 email = self.form.email.data,
             )
             profile.put()
+            Action(who = profile,
+                   what = 'tornou-se membro do rhok bush!').put()
             return redirect('/')
         return self.get(**kwargs)
 
