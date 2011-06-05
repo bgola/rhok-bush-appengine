@@ -8,6 +8,7 @@ class Skill(db.Model):
     Uma habilidade
     """
     name = db.StringProperty()
+    count = db.IntegerProperty(default = 0)
     
     def slug(self):
         return self.name.lower()
@@ -46,9 +47,11 @@ class Resource(db.Model):
     Uma coisa que uma pessoa tem ou pode mobilizar em caso de necessidade
     """
     name = db.StringProperty()
+    count = db.IntegerProperty(default = 0)
     
     def slug(self):
         return self.name.lower()
+
 
 class Profile_Resource(db.Model):
     skill = db.ReferenceProperty(Skill)
