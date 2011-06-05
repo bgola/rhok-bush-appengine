@@ -2,6 +2,11 @@
 
 {% block main %}
 
+<div id="mapao" style="height: 100%"></div>
+		
+{% endblock %}
+
+{% block footer %}
 <script type="text/javascript">
 function initialize(){
 //MAP
@@ -25,23 +30,4 @@ function initialize(){
 
 $(document).ready(initialize);
 </script>
-			<div id="main_inner" style="width: 100%;">
-				<div id="mapao" style="width:79%; float: left; height: 400px; margin-left: 5px;"></div>
-				<div id="secondaryContent_3columns" style="width: 19%;">
-					<h3><span>Filtros</span></h3>
-						<ul class="links">
-							<li class="first"><a href="#">Velit molestie</a></li>
-							<li><a href="#">Consequat cursus</a></li>
-							<li><a href="#">Tempus nullam</a></li>
-							<li><a href="#">Magna sed mauris</a></li>
-							<li><a href="#">Semper molestie</a></li>
-							<li><a href="#">Consequat cursus</a></li>
-							<li><a href="#">Tempus nullam</a></li>
-							<li><a href="#">Magna sed mauris</a></li>
-							<li><a href="#">Semper molestie</a></li>
-						</ul>
-					</div>
-					<div style="clear: both"> </div>
-			</div>
-		
-			{% endblock %}
+{% endblock %}
