@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
+
+{% block tabs %}
+                    <ul id="tabs">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/mapa/">MAPA</a></li>
+                        <li><a href="/sobre/" class="active">SOBRE</a></li>
+                    </ul>
+{% endblock %}
+
 {% block main %}
 
 <div id="main_inner" class="fixed">

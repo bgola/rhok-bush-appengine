@@ -35,6 +35,7 @@ class Action(db.Model):
     when = db.DateTimeProperty(auto_now_add = True)
     who = db.ReferenceProperty(Profile)
     what = db.StringProperty()
+    location = db.GeoPtProperty()
 
     @property
     def name(self):
