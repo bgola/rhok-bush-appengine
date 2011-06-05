@@ -14,9 +14,17 @@ rules = [
             ]),
  
     HandlerPrefix('volunteers.admin_handlers.', [
-            Rule('/admin/skills', name='skill_list', 
+            Rule('/admin/skills/', name='skill_list', 
                  handler='SkillsListHandler'),
-            Rule('/admin/skill/<skill_id>', name='skill_editor', 
+            Rule('/admin/skills/new', name='skill_creator', 
+                 handler='NewSkillHandler'),
+            Rule('/admin/skills/<skill_id>', name='skill_editor', 
                  handler='SkillAdminHandler'),
+            Rule('/admin/resources/', name='resource_list', 
+                 handler='ResourceListHandler'),
+            Rule('/admin/resources/new', name='resource_creator', 
+                 handler='NewResourceHandler'),
+            Rule('/admin/resources/<resource_id>', name='resource_editor', 
+                 handler='ResourceAdminHandler'),
             ]),
 ]

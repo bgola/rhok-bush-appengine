@@ -19,15 +19,23 @@ from forms import ProfileForm
 from models import *
 
 from pymaps import PyMap, Map
+from utils import *
+
+def recent_actions():
+    return [ {'when': a.when, 
+              'name':a.name, 
+              'what': a.what } 
+             for a in Action.all().order('-when').fetch(10) ]
 
 class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
         """Simply returns a Response object with an enigmatic salutation."""
-        recent_actions = [ {'when': a.when, 
-                            'name':a.name, 
-                            'what': a.what } 
-                           for a in Action.all().order('-when').fetch(10) ]
-        return self.render_response('index.html', form = self.form, recent_actions = recent_actions)
+
+        return self.render_response('index.html', 
+                                    form = self.form, 
+                                    recent_actions = recent_actions(), 
+                                    top_skills = top_skills(), 
+                                    top_resources = top_resources())
 
     def post(self, **kwargs):
         if self.form.validate():
@@ -57,8 +65,7 @@ class MapMainHandler(RequestHandler, Jinja2Mixin):
 
 class AboutHandler(RequestHandler, Jinja2Mixin):
     def get(self):
-        recent_actions = [ {'when': a.when, 
-                            'name':a.name, 
-                            'what': a.what} 
-                           for a in Action.all().order('-when').fetch(10) ]
-        return self.render_response('about.html', recent_actions = recent_actions)
+        return self.render_response('about.html', 
+                                    recent_actions = recent_actions(), 
+                                    top_skills = top_skills(), 
+                                    top_resources = top_resources())

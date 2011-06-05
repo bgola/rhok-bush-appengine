@@ -5,7 +5,8 @@
                     <ul id="tabs">
                         <li><a href="/">HOME</a></li>
                         <li><a href="/mapa/">MAPA</a></li>
-                        <li><a href="/sobre/" class="active">SOBRE</a></li>
+                        <li><a href="/sobre/">SOBRE</a></li>
+                        <li><a href="/admin/" class="active">ADMIN</a></li>
                     </ul>
 {% endblock %}
 
@@ -17,12 +18,28 @@
 
                     <div id="columnA_3columns">
 
-                      <h3>Sobre nós</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat, orci in condimentum bibendum, eros lectus ultricies sapien, id gravida massa quam nec lectus. Duis imperdiet lacus non lorem porta egestas. Sed ullamcorper venenatis dui a euismod. Curabitur mi lectus, eleifend nec bibendum sit amet, consectetur id dui. Ut ut nibh sem, eleifend blandit nunc. Proin semper sem sed sapien laoreet vel sagittis ante vestibulum. Suspendisse purus sapien, rhoncus in commodo a, tempus quis est. Vestibulum nec elit ante, eget sagittis dolor. Suspendisse quis nisi erat. Donec sodales dui eu sapien sollicitudin sit amet ultricies nibh euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales placerat arcu ut congue.</p>
- 
+                      <h3>Lista</h3>
+<form method="POST" id="listform" action="">
+  
+<table>
+  <thead>
+  </thead>
+  <tbody>
+{% for r in l %}
+    <tr>
+      <td><input type="checkbox" name="ids" value="{{ r.key().id() }}" /></td>
+      <td>{{ r.name }}</td>
+    </tr>
+{% endfor %} 
+  </tbody>
+</table>
+{% if l %}
+<input type="submit" name="delete" value="Remover selecionados" />
+                            <a href="new">Novo</a>
 
-                      <p>Morbi ac arcu risus. Nulla ac urna vitae nisl cursus fermentum quis ut mauris. Ut viverra purus vitae lorem feugiat at euismod justo tincidunt. Pellentesque vestibulum iaculis sapien id suscipit. Vestibulum scelerisque, tortor eget congue porttitor, nulla tellus facilisis risus, a suscipit ante turpis eu ipsum. Aliquam tincidunt nulla accumsan eros consequat pulvinar. Pellentesque et venenatis massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse at eleifend lacus. Nam eu purus purus, in dapibus nisl. Nulla eu arcu neque. Vestibulum pharetra scelerisque tellus in porttitor. Etiam adipiscing nibh posuere est luctus nec tempus mi ullamcorper. Fusce euismod mi sodales arcu scelerisque aliquet. Nulla elit arcu, imperdiet vitae mattis vel, porta quis magna. Fusce non est dolor, ac cursus mi. Phasellus ullamcorper blandit blandit. Proin justo augue, consectetur vel ultrices ac, volutpat non felis. Maecenas vulputate velit at augue suscipit posuere.</p>
-                      </div>
+{% endif %}
+</form>
+                    </div>
                 </div>
         
                 <div id="secondaryContent_3columns">
@@ -62,7 +79,6 @@
                         {% endfor %}
                         </ul>
                     </div>
-
                 </div>
 
                 <br class="clear" />

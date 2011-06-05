@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div id="main">
+<div id="main_inner" class="fixed">
+
+                <div id="primaryContent_3columns">
+
+                    <div id="columnA_3columns">
+                        <h3>{{ label }}</h3>
+
+                        <div id="formulario">
+                            <form action="" id="formCadastro" method="post">
+                              <table>
+                                {% for field in form %}
+                                <tr>
+                                  <td>{{ field.label }}</td>
+                                  <td>{{ field }}</td>
+                                </tr>
+                              {% endfor %}
+                              </table>
+                            <input type="submit" />
+                            
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+        
+                <div id="secondaryContent_3columns">
+        
+                    <div id="columnB_3columns">
+        
+                        <h3><span>Ações</span></h3> 
+                        <ul id="acoes">
+                          {% for action in recent_actions %}
+                            <li>
+                                <label class="label_acao">{{ action.name }}</label><br>
+                                <label class="label_data_acao">{{ action.when }}</label>
+                                <br>
+                                <label class="label_descricao_acao"><a href="#">{{ action.what }}</a></label>
+
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                        
+
+                    </div>
+            
+                    <div id="columnC_3columns">
+                        <h3><span>Habilidades</span></h3>   
+                        <ul class="links">
+                          {% for i in top_skills %}
+                        <li {% if loop.first %}class="first"{% endif %}><a href="#">{{ i.name }}&nbsp;({{ i.count }})</a></li>
+                        {% endfor %}
+
+                        </ul>
+                
+                        <h3><span>Recursos</span></h3>  
+                        <ul class="links">
+                          {% for i in top_resources %}
+                        <li {% if loop.first %}class="first"{% endif %}><a href="#">{{ i.name }}&nbsp;({{ i.count }})</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
+
+                </div>
+
+                <br class="clear" />
+
+            </div>
+    </div>
+{% endblock %}
