@@ -48,8 +48,8 @@ class Map:
         self.height   = "300px"  # map div height
         self.center   = (0,0)     # center map latitude coordinate
         self.zoom        = "1"   # zoom level
-        self.navcontrols  =   True   # show google map navigation controls
-        self.mapcontrols  =   True   # show toogle map type (sat/map/hybrid) controls
+        self.navcontrols  =   False   # show google map navigation controls
+        self.mapcontrols  =   False   # show toogle map type (sat/map/hybrid) controls
         if pointlist == None:
             self.points = []   # empty point list
         else:
@@ -219,9 +219,77 @@ class PyMap:
         
         """ % (self.key, self._buildicons(),self._buildmaps())
         return self.js 
+
+    def draggableEvtHandler(self):
+        return """
+                google.maps.event.addListener(marker, "dragend", function() {
+                    var point = marker.getLatLng(); 
+                    var lat = point.lat();
+                    var lng = point.lng();
+                    $.post(
+                        "update.php",
+                        {latitude: lat, longitude: lng},
+                            function(responseText){
+                            $("#result").html(responseText);
+                        },
+                        "html"
+                    );          
+                    alert("Przesuniety");
+                });
+        """
+    
+    def pymapjs3(self,draggable=False):
+        self.js ="""\n
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript">
+            function load() {
+    
+                function Map(id,points,lat,long,zoom) {
+                    this.myOptions ={
+                        zoom: zoom,
+                        center: new google.maps.LatLng(lat, long),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        streetViewControl: true 
+                    } 
+                    this.id = id;
+                    this.points = points;
+                    this.markerlist = markerlist;
+                    this.addmarker = addmarker;
+                    this.gmap = new google.maps.Map(document.getElementById(this.id), this.myOptions);                
+
+                
+                   function markerlist(array) {
+                         for (var i in array) {
+                            this.addmarker(array[i]);
+                         }
+                  }
+                  
+                   function addmarker(point) {
+                        var marker = new google.maps.Marker({
+                              position:  new google.maps.LatLng(point[0],point[1]), 
+                              map: this.gmap, 
+                              title: point[2],
+                              clickable: true,
+                              draggable: %s,
+                              flat: true,
+                          });
+                          
+                        %s
+                    }
+                    
+                    this.markerlist(this.points);
+                     
+                }
+
+                %s
+                
+            }
+        </script>
+        """ % ( str( draggable ).lower(), self.draggableEvtHandler(), self._buildmaps() )
+        return self.js
     
     
-        
+       
     def showhtml(self):
         """returns a complete html page with a map"""
         
