@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """URL definitions."""
-from tipfy.routing import Rule
+from tipfy.routing import Rule, HandlerPrefix
 
 rules = [
     HandlerPrefix('volunteers.handlers.', [
@@ -14,7 +14,7 @@ rules = [
             ]),
  
     HandlerPrefix('volunteers.admin_handlers.', [
-            Rule('/admin/skills>', name='skill_list', 
+            Rule('/admin/skills', name='skill_list', 
                  handler='SkillsListHandler'),
             Rule('/admin/skill/<skill_id>', name='skill_editor', 
                  handler='SkillAdminHandler'),
