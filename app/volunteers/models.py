@@ -9,8 +9,8 @@ class Skill(db.Model):
     """
     name = db.StringProperty()
     
-#    def slug(self):
-#        return defaultfilters.slugify(self.name)
+    def slug(self):
+        return self.name.lower()
 
 class Profile(db.Model):
     """
@@ -41,8 +41,23 @@ class Action(db.Model):
     def name(self):
         return self.who.name
 
+class Resource(db.Model):
+    """
+    Uma coisa que uma pessoa tem ou pode mobilizar em caso de necessidade
+    """
+    name = db.StringProperty()
+    
+    def slug(self):
+        return self.name.lower()
+
+class Profile_Resource(db.Model):
+    skill = db.ReferenceProperty(Skill)
+    resource = db.ReferenceProperty(Resource)
+   
+
 class SMS(db.Model):
     """
     Mensagem de SMS - manter 
     """
     pass
+
