@@ -378,7 +378,9 @@ input.text {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	font-size:28px;
+	padding: 5px;
+	font-size:20px;
+	width: 450px;
 }
 #formulario input[type="button"] {
 	background-color: #184366;
@@ -389,7 +391,15 @@ input.text {
 	font-size:20px;
 	padding:5px;
 	color:#FFF;
+}
 
+#formulario #mobile {
+	width: 200px;
+}
+
+#map_canvas {
+	width: 450px;
+	height: 450px;
 }
 #warning {
 	background-color: #FF1305;
