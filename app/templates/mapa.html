@@ -7,27 +7,10 @@
 {% endblock %}
 
 {% block footer %}
+
+{{ pymap.pymapjs()|safe }}
+
 <script type="text/javascript">
-function initialize(){
-//MAP
-  var latlng = new google.maps.LatLng(41.659,-4.714);
-  var options = {
-    zoom: 16,
-    center: latlng,
-    mapTypeId: google.maps.MapTypeId.SATELLITE
-  };
-
-  map = new google.maps.Map(document.getElementById("mapao"), options);
-
-  //GEOCODER
-  geocoder = new google.maps.Geocoder();
-
-  marker = new google.maps.Marker({
-    map: map,
-    draggable: true
-  });
-}
-
-$(document).ready(initialize);
+	load();
 </script>
 {% endblock %}

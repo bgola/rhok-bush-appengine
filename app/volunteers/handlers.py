@@ -18,6 +18,8 @@ from wtforms.form import WebobInputWrapper
 from forms import ProfileForm
 from models import *
 
+from pymaps import PyMap, Map
+
 class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
         """Simply returns a Response object with an enigmatic salutation."""
@@ -48,7 +50,9 @@ class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
 
 class MapMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
-        return self.render_response('mapa.html')
+        points = [ (profile.location.lat, profile.location.lon, profile.name, '') for profile in Profile.all().fetch(1000) ]
+        pm = PyMap(maplist=[Map("mapao", points)])
+        return self.render_response('mapa.html', pymap=pm)
 
 
 class AboutHandler(RequestHandler, Jinja2Mixin):
