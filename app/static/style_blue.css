@@ -9,13 +9,14 @@ width: 90% !important;
 	margin: 0em;
 	padding: 0em;
 }
-
+html { height: 100%; }
 body
 {
 background-color: #fff;
 color: #585858;
 font-size: 9pt;
 font-family: "trebuchet ms", helvetica, sans-serif;
+height: 100%;
 }
 
 h1,h2,h3,h4,h5,h6
@@ -166,6 +167,7 @@ background: #440000 url('images_blue/n1.gif') repeat-x;
 #main
 {
 	background: #fff url('images_blue/n2.gif') 0px 1px repeat-x;
+	position: relative;
 }
 
 #main_inner p

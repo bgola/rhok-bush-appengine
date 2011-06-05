@@ -1,21 +1,34 @@
 {% extends 'base.html' %}
 
 {% block main %}
-			<div id="main_inner" class="fixed">
 
-				<div id="primaryContent_3columns">
+<script type="text/javascript">
+function initialize(){
+//MAP
+  var latlng = new google.maps.LatLng(41.659,-4.714);
+  var options = {
+    zoom: 16,
+    center: latlng,
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  };
 
-					<div id="columnA_3columns">
-						<div id="map_canvas"></div>
-					</div>
-					
-				</div>
-		
-				<div id="secondaryContent_3columns">
-			
-					<div id="columnC_3columns">
-	
-						<h3><span>Filtros</span></h3>	
+  map = new google.maps.Map(document.getElementById("mapao"), options);
+
+  //GEOCODER
+  geocoder = new google.maps.Geocoder();
+
+  marker = new google.maps.Marker({
+    map: map,
+    draggable: true
+  });
+}
+
+$(document).ready(initialize);
+</script>
+			<div id="main_inner" style="width: 100%;">
+				<div id="mapao" style="width:79%; float: left; height: 400px; margin-left: 5px;"></div>
+				<div id="secondaryContent_3columns" style="width: 19%;">
+					<h3><span>Filtros</span></h3>
 						<ul class="links">
 							<li class="first"><a href="#">Velit molestie</a></li>
 							<li><a href="#">Consequat cursus</a></li>
@@ -28,10 +41,7 @@
 							<li><a href="#">Semper molestie</a></li>
 						</ul>
 					</div>
-
-				</div>
-
-				<br class="clear" />
-
+					<div style="clear: both"> </div>
 			</div>
-{% endblock %}
+		
+			{% endblock %}
