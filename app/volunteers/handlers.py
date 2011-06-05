@@ -48,3 +48,4 @@ class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
 class MapMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
         return self.render_response('mapa.html')
+
