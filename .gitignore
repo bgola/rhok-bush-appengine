@@ -1,0 +1,5 @@
+*.pyc
+media/ofertas/*
+*~
+settings_local.py
+imperdivel.log
