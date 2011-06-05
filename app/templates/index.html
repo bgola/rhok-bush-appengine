@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+		<title>rhok-bush: rede de voluntários online</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link rel="shortcut icon" href="favicon.ico" type="/static/image/vnd.microsoft.icon" />
+		<link rel="stylesheet" type="text/css" title="Red" href="/static/style_blue.css" />
+		<script src="/js/form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/js/scripts.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="header">
+
+			<div id="header_inner" class="fixed">
+
+				<div id="logo">
+					<img src="/static/images/top_logo.png" width="580px"/><br>
+				</div>
+		
+				<div id="menu">
+					<ul id="tabs">
+						<li><a href="#" class="active">HOME</a></li>
+						<li><a href="#">MAPA</a></li>
+					</ul>
+				</div>
+		
+			</div>
+		</div>
+
+		<div id="main">
+
+			<div id="main_inner" class="fixed">
+
+				<div id="primaryContent_3columns">
+
+					<div id="columnA_3columns">
+		
+						<label class="vermelho_grande" style="font-weight:bold;">
+							Você precisa de algo?<br>
+							Alguém pode precisar de você!		
+						</label>
+						<p>
+
+						</p>				
+						<br class="clear" />				
+						<h3>Quer ajudar alguém mas não sabe por onde começar ou está com preguiça? Comece fazendo seu cadastro no RHoK Bush...</h3>
+
+						<div id="formulario" method="post" action="#">
+							<form action="" id="formCadastro">
+								<p>
+									<label class="label_form">Nome:</label><br>
+									<input type="text" size="26" name="nome" id="txtNome">
+								</p>
+								<p>
+									<label class="label_form">E-Mail:</label><br>
+									<input type="text" size="20" name="email" id="txtEmail">
+								</p>
+								<p>
+									<label class="label_form">Telefone/Celular:</label><br>
+									<input type="text" size="2" style="text-align:center;" name="ddd" id="txtDDD"> 
+									<label class="label_form">-</label> 
+									<input type="text" size="15" name="telefone" id="txtTelefone">
+								</p>
+								<p>
+									<label class="label_form">Endereço:</label><br>
+									<input type="text" size="26">
+								</p>
+								<div id="warning"></div><br>
+								<input type="button" value="Cadastrar" onclick="validate_form_register();">				
+							</form>
+						</div>
+					</div>
+					
+				</div>
+		
+				<div id="secondaryContent_3columns">
+		
+					<div id="columnB_3columns">
+		
+						<h4><span>Search</span></h4>
+				
+						<form method="post" action="">
+						<div id="search">
+							<input type="text" class="text" name="keywords" />
+							<input type="submit" class="button" value="Go" />
+							<br class="clear" />
+						</div>
+						</form>
+				
+						<h4><span>About</span> Me</h4>
+						<p><strong>Veroeros sed</strong> varius sollici, arcu. Vivamus et viverra. tor. Aenean felis. Quisque eros. <a href="#">Lorem ipsum dolor</a>.</p>
+	
+						<h4><span>Lorem</span> Ipsum</h4>
+						<ul class="links">
+						<li class="first"><a href="#">Fusce dui neque fringilla</a></li>
+						<li><a href="#">Eget tempor eget nonummy</a></li>
+						<li><a href="#">Nec metus sed donec</a></li>
+						<li><a href="#">Velit semper nisi molestie</a></li>
+						<li><a href="#">Consequat sed cursus</a></li>
+						<li><a href="#">Nisi tempus nullam</a></li>
+						<li><a href="#">Magna sed bibendum mauris</a></li>
+						<li><a href="#">Velit semper nisi molestie</a></li>
+						<li><a href="#">Consequat sed cursus</a></li>
+						<li><a href="#">Id posuere metus sem</a></li>
+						<li><a href="#">Eget tempor eget nullam</a></li>
+						<li><a href="#">Velit semper nisi molestie</a></li>
+						<li><a href="#">Consequat sed cursus</a></li>
+						</ul>
+
+					</div>
+			
+					<div id="columnC_3columns">
+	
+						<h4><span>Veroeros</span> Etiam</h4>
+						<ul class="links">
+						<li class="first"><a href="#">Velit molestie</a></li>
+						<li><a href="#">Consequat cursus</a></li>
+						<li><a href="#">Tempus nullam</a></li>
+						<li><a href="#">Magna sed mauris</a></li>
+						<li><a href="#">Semper molestie</a></li>
+						</ul>
+				
+						<h4><span>Blandit</span> Consequat</h4>
+						<ul class="links">
+						<li class="first"><a href="#">Dui neque fringilla</a></li>
+						<li><a href="#">Metus sed donec</a></li>
+						<li><a href="#">Semper nisi molestie</a></li>
+						<li><a href="#">Sed cursus</a></li>
+						<li><a href="#">Tempus nullam</a></li>
+						<li><a href="#">Semper nisi molestie</a></li>
+						<li><a href="#">Sed bibendum mauris</a></li>
+						</ul>
+	
+						<h4><span>Cool</span> Stuff</h4>
+						<ul class="links">
+						<li class="first"><a href="http://www.nodethirtythree.com/">NodeThirtyThree</a></li>
+						<li><a href="http://www.4templates.com/?aff=n33">4Templates.com</a></li>
+						<li><a href="http://www.wpthemepark.com/">WPThemePark</a></li>
+						<li><a href="http://www.openwebdesign.org/userinfo.phtml?user=node33">OpenWebDesign</a></li>
+						<li><a href="http://www.zeroweb.org/">Zeroweb.org</a></li>
+						</ul>
+
+					</div>
+
+				</div>
+
+				<br class="clear" />
+
+			</div>
+
+		</div>
+
+		<div id="footer" class="fixed">
+			Copyright &copy; 2006 Your Website. All rights reserved. Design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a>.
+		</div>
+	</body>
+</html>
