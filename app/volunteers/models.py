@@ -8,5 +8,4 @@ class Profile(db.Model):
     email = db.EmailProperty()
     mobile = db.PhoneNumberProperty()
     location = db.GeoPtProperty()
-    radius = db.IntegerProperty()
 

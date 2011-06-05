@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
 """WSGI app setup."""
 import os
+import sys
 
-import set_sys_path
+# Add lib as primary libraries directory, with fallback to lib/dist
+# and optionally to lib/dist.zip, loaded using zipimport.
+lib_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'lib')
+if lib_path not in sys.path:
+    sys.path[0:0] = [
+        lib_path,
+        os.path.join(lib_path, 'dist'),
+        os.path.join(lib_path, 'dist.zip'),
+    ]
+
 
 from tipfy.app import App
 from config import config

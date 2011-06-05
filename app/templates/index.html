@@ -43,7 +43,7 @@ function placeMarker(location) {
 
   where = document.getElementById("location");
   position = actualMark.getPosition();
-  where.value = position.toString();
+  where.value = position.lat() + "," + position.lng();
 }
 		</script>
 	</head>
@@ -76,7 +76,7 @@ function placeMarker(location) {
 		
 						<label class="vermelho_grande" style="font-weight:bold;">
 							Você precisa de algo?<br>
-							Alguém pode precisar de você!		
+							Alguém pode precisar de você! {{ c }} pessoas.
 						</label>
 						<p>
 
@@ -84,28 +84,56 @@ function placeMarker(location) {
 						<br class="clear" />				
 						<h3>Quer ajudar alguém mas não sabe por onde começar ou está com preguiça? Comece fazendo seu cadastro no RHoK Bush...</h3>
 
-						<div id="formulario" method="post" action="#">
-							<form action="" id="formCadastro">
+						<div id="formulario">
+							<form action="" id="formCadastro" method="post">
 								<p>
 									<label class="label_form">Nome:</label><br>
+							    		{% if form.name.errors %}
+									    <ul class="errors">
+									{% for error in form.name.errors %}
+										<li>{{ error }}</li>
+									{% endfor %}
+									     </ul>
+									{% endif %}
 									{{ form.name }}
 								</p>
 								<p>
 									<label class="label_form">Telefone/Celular:</label><br>
+							    		{% if form.mobile.errors %}
+									    <ul class="errors">
+									{% for error in form.mobile.errors %}
+										<li>{{ error }}</li>
+									{% endfor %}
+									     </ul>
+									{% endif %}
 									{{ form.mobile }}
 								</p>
 								<p>
 									<label class="label_form">E-Mail:</label><br>
+							    		{% if form.email.errors %}
+									    <ul class="errors">
+									{% for error in form.email.errors %}
+										<li>{{ error }}</li>
+									{% endfor %}
+									     </ul>
+									{% endif %}
 									{{ form.email }}
 								</p>
 
 								<p>
 									<label class="label_form">Localização:</label><br>
+							    		{% if form.location.errors %}
+									    <ul class="errors">
+									{% for error in form.location.errors %}
+										<li>{{ error }}</li>
+									{% endfor %}
+									     </ul>
+									{% endif %}
 									{{ form.location }}	
 								</p>
 								<div id="map_canvas"></div>
 								<p>
-									<input type="button" value="Cadastrar" onclick="validate_form_register();">
+									<input type="submit" value="Cadastrar" />
 								</p>
 							</form>
 						</div>
