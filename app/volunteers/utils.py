@@ -32,6 +32,10 @@ def in_radius(pt1, pt2, d=0.5):
 import urllib2, urllib
 
 def smssend(phone, message):
-    response = urllib2.urlopen("http://186.202.49.60:8080/api/sms?cmd=send&token=1307270193710&to=%s&message=%s" % (phone, urllib.quote(message))).read()
+    try:
+        response = urllib2.urlopen("http://186.202.49.60:8080/api/sms?cmd=send&token=1307270193710&to=%s&message=%s" % (phone, urllib.quote(message))).read()
+    except: 
+        pass # Won't work until we have an SMS gateway
+    
     return '"response":"OK"' in response
 
