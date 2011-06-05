@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
+{% block tabs %}
+                    <ul id="tabs">
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/mapa/" class="active">MAPA</a></li>
+                        <li><a href="/sobre/">SOBRE</a></li>
+                    </ul>
+{% endblock %}
+
 {% block main %}
 
 <div id="mapao" style="height: 100%"></div>
