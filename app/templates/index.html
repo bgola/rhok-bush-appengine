@@ -4,130 +4,126 @@
 
 <div id="main_inner" class="fixed">
 
-				<div id="primaryContent_3columns">
+                <div id="primaryContent_3columns">
 
-					<div id="columnA_3columns">
-		
-						<label class="vermelho_grande" style="font-weight:bold;">
-							Você precisa de algo?<br>
-							Alguém pode precisar de você!		
-						</label>
-						<p>
+                    <div id="columnA_3columns">
+        
+                        <label class="vermelho_grande" style="font-weight:bold;">
+                            Você precisa de algo?<br>
+                            Alguém pode precisar de você!       
+                        </label>
+                        <p>
 
-						</p>				
-						<br class="clear" />				
-						<h3>Quer ajudar alguém mas não sabe por onde começar ou está com preguiça? Comece fazendo seu cadastro no RHoK Bush...</h3>
+                        </p>                
+                        <br class="clear" />                
+                        <h3>Quer ajudar alguém mas não sabe por onde começar ou está com preguiça? Comece fazendo seu cadastro no RHoK Bush...</h3>
 
-						<div id="formulario">
-							<form action="" id="formCadastro" method="post">
-								<p>
-									<label class="label_form">Nome:</label><br>
-							    		{% if form.name.errors %}
-									    <ul class="errors">
-									{% for error in form.name.errors %}
-										<li>{{ error }}</li>
-									{% endfor %}
-									     </ul>
-									{% endif %}
-									{{ form.name }}
-								</p>
-								<p>
-									<label class="label_form">Telefone/Celular:</label><br>
-							    		{% if form.mobile.errors %}
-									    <ul class="errors">
-									{% for error in form.mobile.errors %}
-										<li>{{ error }}</li>
-									{% endfor %}
-									     </ul>
-									{% endif %}
-									{{ form.mobile }}
-								</p>
-								<p>
-									<label class="label_form">E-Mail:</label><br>
-							    		{% if form.email.errors %}
-									    <ul class="errors">
-									{% for error in form.email.errors %}
-										<li>{{ error }}</li>
-									{% endfor %}
-									     </ul>
-									{% endif %}
-									{{ form.email }}
-								</p>
+                        <div id="formulario">
+                            <form action="" id="formCadastro" method="post">
+                                <p>
+                                    <label class="label_form">Nome:</label><br>
+                                        {% if form.name.errors %}
+                                        <ul class="errors">
+                                    {% for error in form.name.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                         </ul>
+                                    {% endif %}
+                                    {{ form.name }}
+                                </p>
+                                <p>
+                                    <label class="label_form">Telefone/Celular:</label><br>
+                                        {% if form.mobile.errors %}
+                                        <ul class="errors">
+                                    {% for error in form.mobile.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                         </ul>
+                                    {% endif %}
+                                    {{ form.mobile }}
+                                </p>
+                                <p>
+                                    <label class="label_form">E-Mail:</label><br>
+                                        {% if form.email.errors %}
+                                        <ul class="errors">
+                                    {% for error in form.email.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                         </ul>
+                                    {% endif %}
+                                    {{ form.email }}
+                                </p>
 
-								<p>
-									<label class="label_form">Localização:</label><br>
-							    		{% if form.location.errors %}
-									    <ul class="errors">
-									{% for error in form.location.errors %}
-										<li>{{ error }}</li>
-									{% endfor %}
-									     </ul>
-									{% endif %}
-									<input name="endereco" id="endereco" type="text" value="" />
-									<input name="location" id="location" type="hidden" />
+                                <p>
+                                    <label class="label_form">Localização:</label><br>
+                                        {% if form.location.errors %}
+                                        <ul class="errors">
+                                    {% for error in form.location.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                         </ul>
+                                    {% endif %}
+                                    <input name="endereco" id="endereco" type="text" value="" />
+                                    <input name="location" id="location" type="hidden" />
 
-								</p>
-								<div id="mymap"></div>
-								<p>
-									<input id="enviar" type="submit" value="Cadastrar" />
-								</p>
-							</form>
+                                </p>
+                                <div id="mymap"></div>
+                                <p>
+                                    <input id="enviar" type="submit" value="Cadastrar" />
+                                </p>
+                            </form>
 
-						</div>
-					</div>
-					
-				</div>
-		
-				<div id="secondaryContent_3columns">
-		
-					<div id="columnB_3columns">
-		
-						<h3><span>Ações</span></h3>	
-						<ul id="acoes">
-							<li>
-								<label class="label_acao">Murilo Prestes</label><br>
-								<label class="label_data_acao">04/06/2011 - 21:08</label>
-								<br>
-								<label class="label_descricao_acao"><a href="#">tornou-se membro do rhok bush!</a></label>
+                        </div>
+                    </div>
+                    
+                </div>
+        
+                <div id="secondaryContent_3columns">
+        
+                    <div id="columnB_3columns">
+        
+                        <h3><span>Ações</span></h3> 
+                        <ul id="acoes">
+                          {% for action in recent_actions %}
+                            <li>
+                                <label class="label_acao">{{ action.name }}</label><br>
+                                <label class="label_data_acao">{{ action.when }}</label>
+                                <br>
+                                <label class="label_descricao_acao"><a href="#">{{ action.what }}</a></label>
 
-							</li>
-							<li>
-								<label class="label_acao">João Silva</label><br>
-								<label class="label_data_acao">04/06/2011 - 22:00</label>
-								<br>
-								<label class="label_descricao_acao"><a href="#">criou uma nova chamada!</a></label>
+                            </li>
+                            {% endfor %}
 
-							</li>
-						</ul>
-						
+                        </ul>
+                        
 
-					</div>
-			
-					<div id="columnC_3columns">
-	
-						<h3><span>Habilidades</span></h3>	
-						<ul class="links">
-						<li class="first"><a href="#">Velit molestie</a></li>
-						<li><a href="#">Consequat cursus</a></li>
-						<li><a href="#">Tempus nullam</a></li>
-						<li><a href="#">Magna sed mauris</a></li>
-						<li><a href="#">Semper molestie</a></li>
-						</ul>
-				
-						<h3><span>Recursos</span></h3>	
-						<ul class="links">
-						<li class="first"><a href="#">Velit molestie</a></li>
-						<li><a href="#">Consequat cursus</a></li>
-						<li><a href="#">Tempus nullam</a></li>
-						<li><a href="#">Magna sed mauris</a></li>
-						<li><a href="#">Semper molestie</a></li>
-						</ul>
-					</div>
+                    </div>
+            
+                    <div id="columnC_3columns">
+    
+                        <h3><span>Habilidades</span></h3>   
+                        <ul class="links">
+                        <li class="first"><a href="#">Velit molestie</a></li>
+                        <li><a href="#">Consequat cursus</a></li>
+                        <li><a href="#">Tempus nullam</a></li>
+                        <li><a href="#">Magna sed mauris</a></li>
+                        <li><a href="#">Semper molestie</a></li>
+                        </ul>
+                
+                        <h3><span>Recursos</span></h3>  
+                        <ul class="links">
+                        <li class="first"><a href="#">Velit molestie</a></li>
+                        <li><a href="#">Consequat cursus</a></li>
+                        <li><a href="#">Tempus nullam</a></li>
+                        <li><a href="#">Magna sed mauris</a></li>
+                        <li><a href="#">Semper molestie</a></li>
+                        </ul>
+                    </div>
 
-				</div>
+                </div>
 
-				<br class="clear" />
+                <br class="clear" />
 
-			</div>
+            </div>
 
 {% endblock %}
