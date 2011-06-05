@@ -85,3 +85,11 @@ class NewResourceHandler(RequestHandler, Jinja2Mixin):
     @cached_property
     def form(self):
         return ResourceForm(self.request.form)
+
+class AdminMenuHandler(RequestHandler, Jinja2Mixin):
+    def get(self):
+        return self.render_response('admin_menu.html', 
+                                    recent_actions = recent_actions(), 
+                                    label = u'Adicionar novo recurso', 
+                                    top_skills = top_skills(), 
+                                    top_resources = top_resources())
