@@ -400,6 +400,7 @@ input.text {
 #map_canvas {
 	width: 450px;
 	height: 450px;
+	margin-bottom: 15px;
 }
 #warning {
 	background-color: #FF1305;
