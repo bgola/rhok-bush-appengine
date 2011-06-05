@@ -67,4 +67,6 @@ $(document).ready(function() {
     });
   });
   
+  //Add an input mask to the mobile phone input
+  $('#mobile').mask('+99 (99) 9999-9999');
 });
