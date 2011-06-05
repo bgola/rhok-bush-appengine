@@ -12,7 +12,10 @@ from tipfy.app import Response
 from tipfy.handler import RequestHandler
 from tipfyext.jinja2 import Jinja2Mixin
 
+from forms import ProfileForm
+
 class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
         """Simply returns a Response object with an enigmatic salutation."""
-        return self.render_response('index.html')
+        form = ProfileForm()
+        return self.render_response('index.html', form=form)
