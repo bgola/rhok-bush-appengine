@@ -390,7 +390,7 @@ input.text {
 	font-size:20px;
 	width: 450px;
 }
-#formulario input[type="button"] {
+#formulario input[type="submit"] {
 	background-color: #184366;
 	border:none;
 	-webkit-border-radius: 5px;
