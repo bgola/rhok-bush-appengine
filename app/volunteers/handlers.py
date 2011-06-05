@@ -21,8 +21,7 @@ from models import Profile
 class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
         """Simply returns a Response object with an enigmatic salutation."""
-        c = Profile.all().count()
-        return self.render_response('index.html', form=self.form, c=c)
+        return self.render_response('index.html', form=self.form)
 
     def post(self, **kwargs):
         if self.form.validate():
@@ -39,3 +38,7 @@ class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
     @cached_property
     def form(self):
         return ProfileForm(self.request.form)
+
+class MapMainHandler(RequestHandler, Jinja2Mixin):
+    def get(self):
+        return self.render_response('mapa.html')
