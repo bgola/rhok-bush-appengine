@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div id="main_inner" class="fixed">
+
+                <div id="primaryContent_3columns">
+
+                    <div id="columnA_3columns">
+
+                      <h3>Sobre nós</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat, orci in condimentum bibendum, eros lectus ultricies sapien, id gravida massa quam nec lectus. Duis imperdiet lacus non lorem porta egestas. Sed ullamcorper venenatis dui a euismod. Curabitur mi lectus, eleifend nec bibendum sit amet, consectetur id dui. Ut ut nibh sem, eleifend blandit nunc. Proin semper sem sed sapien laoreet vel sagittis ante vestibulum. Suspendisse purus sapien, rhoncus in commodo a, tempus quis est. Vestibulum nec elit ante, eget sagittis dolor. Suspendisse quis nisi erat. Donec sodales dui eu sapien sollicitudin sit amet ultricies nibh euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales placerat arcu ut congue.</p>
+ 
+
+                      <p>Morbi ac arcu risus. Nulla ac urna vitae nisl cursus fermentum quis ut mauris. Ut viverra purus vitae lorem feugiat at euismod justo tincidunt. Pellentesque vestibulum iaculis sapien id suscipit. Vestibulum scelerisque, tortor eget congue porttitor, nulla tellus facilisis risus, a suscipit ante turpis eu ipsum. Aliquam tincidunt nulla accumsan eros consequat pulvinar. Pellentesque et venenatis massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse at eleifend lacus. Nam eu purus purus, in dapibus nisl. Nulla eu arcu neque. Vestibulum pharetra scelerisque tellus in porttitor. Etiam adipiscing nibh posuere est luctus nec tempus mi ullamcorper. Fusce euismod mi sodales arcu scelerisque aliquet. Nulla elit arcu, imperdiet vitae mattis vel, porta quis magna. Fusce non est dolor, ac cursus mi. Phasellus ullamcorper blandit blandit. Proin justo augue, consectetur vel ultrices ac, volutpat non felis. Maecenas vulputate velit at augue suscipit posuere.</p>
+                      </div>
+                </div>
+        
+                <div id="secondaryContent_3columns">
+        
+                    <div id="columnB_3columns">
+        
+                        <h3><span>Ações</span></h3> 
+                        <ul id="acoes">
+                          {% for action in recent_actions %}
+                            <li>
+                                <label class="label_acao">{{ action.name }}</label><br>
+                                <label class="label_data_acao">{{ action.when }}</label>
+                                <br>
+                                <label class="label_descricao_acao"><a href="#">{{ action.what }}</a></label>
+
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                        
+
+                    </div>
+            
+                    <div id="columnC_3columns">
+    
+                        <h3><span>Habilidades</span></h3>   
+                        <ul class="links">
+                        <li class="first"><a href="#">Velit molestie (100)</a></li>
+                        <li><a href="#">Consequat cursus&nbsp;(85)</a></li>
+                        <li><a href="#">Tempus nullam&nbsp;(12)</a></li>
+                        <li><a href="#">Magna sed mauris&nbsp;(3)</a></li>
+                        <li><a href="#">Semper molestie&nbsp;(2)</a></li>
+                        </ul>
+                
+                        <h3><span>Recursos</span></h3>  
+                        <ul class="links">
+                        <li class="first"><a href="#">Velit molestie&nbsp;(200)</a></li>
+                        <li><a href="#">Consequat cursus&nbsp;(100)</a></li>
+                        <li><a href="#">Tempus nullam&nbsp;(89)</a></li>
+                        <li><a href="#">Magna sed mauris&nbsp;(10)</a></li>
+                        <li><a href="#">Semper molestie&nbsp;(1)</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <br class="clear" />
+
+            </div>
+
+{% endblock %}
