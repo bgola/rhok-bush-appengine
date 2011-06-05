@@ -1,0 +1,5 @@
+cron:
+- description: disaster collector
+  url: /tasks/collect_disasters
+  schedule: every 5 minutes
+
