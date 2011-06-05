@@ -95,28 +95,22 @@
                             {% endfor %}
 
                         </ul>
-                        
-
                     </div>
-            
+
                     <div id="columnC_3columns">
-    
                         <h3><span>Habilidades</span></h3>   
                         <ul class="links">
-                        <li class="first"><a href="#">Velit molestie (100)</a></li>
-                        <li><a href="#">Consequat cursus&nbsp;(85)</a></li>
-                        <li><a href="#">Tempus nullam&nbsp;(12)</a></li>
-                        <li><a href="#">Magna sed mauris&nbsp;(3)</a></li>
-                        <li><a href="#">Semper molestie&nbsp;(2)</a></li>
+                          {% for i in top_skills %}
+                        <li {% if loop.first %}class="first"{% endif %}><a href="#">{{ i.name }}&nbsp;({{ i.count }})</a></li>
+                        {% endfor %}
+
                         </ul>
                 
                         <h3><span>Recursos</span></h3>  
                         <ul class="links">
-                        <li class="first"><a href="#">Velit molestie&nbsp;(200)</a></li>
-                        <li><a href="#">Consequat cursus&nbsp;(100)</a></li>
-                        <li><a href="#">Tempus nullam&nbsp;(89)</a></li>
-                        <li><a href="#">Magna sed mauris&nbsp;(10)</a></li>
-                        <li><a href="#">Semper molestie&nbsp;(1)</a></li>
+                          {% for i in top_resources %}
+                        <li {% if loop.first %}class="first"{% endif %}><a href="#">{{ i.name }}&nbsp;({{ i.count }})</a></li>
+                        {% endfor %}
                         </ul>
                     </div>
 
