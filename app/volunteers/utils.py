@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import datetime
+
 from models import *
 
 def recent_actions():
@@ -20,7 +22,7 @@ def top_resources():
              for o in Resource.all().order('-count').order('name').fetch(5) ]
 
 def recent_actions():
-    return [ {'when': a.when, 
+    return [ {'when': a.when.strftime("%Y-%m-%d %H:%M GMT"), 
               'name':a.name, 
               'what': a.what,
               'is_event': a.is_event()} 
@@ -32,6 +34,9 @@ def in_radius(pt1, pt2, d=0.5):
 import urllib2, urllib
 
 def smssend(phone, message):
-    response = urllib2.urlopen("http://186.202.49.60:8080/api/sms?cmd=send&token=1307270193710&to=%s&message=%s" % (phone, urllib.quote(message))).read()
+    try:
+        response = urllib2.urlopen("http://186.202.49.60:8080/api/sms?cmd=send&token=1307270193710&to=%s&message=%s" % (phone, urllib.quote(message))).read()
+    except: 
+        pass # Won't work until we have an SMS gateway
     return '"response":"OK"' in response
 
