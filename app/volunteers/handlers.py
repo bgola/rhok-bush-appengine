@@ -21,12 +21,6 @@ from models import *
 from pymaps import PyMap, Map
 from utils import *
 
-def recent_actions():
-    return [ {'when': a.when, 
-              'name':a.name, 
-              'what': a.what } 
-             for a in Action.all().order('-when').fetch(10) ]
-
 class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
         """Simply returns a Response object with an enigmatic salutation."""
@@ -39,6 +33,7 @@ class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
 
     def post(self, **kwargs):
         if self.form.validate():
+                
             profile = Profile(
                 name = self.form.name.data,
                 mobile = self.form.mobile.data,
@@ -46,6 +41,20 @@ class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
                 email = self.form.email.data,
             )
             profile.put()
+            skills = self.form.skills.data
+            for skill in skills:
+                s = Skill.all().filter('name',skill).get()
+                s.count += 1
+                s.put()
+                sp = Profile_Skill(profile=profile, skill=s)
+                sp.put()
+            resources = self.form.resources.data
+            for resource in resources:
+                r = Resource.all().filter('name',resource).get()
+                r.count += 1
+                r.put()
+                rp = Profile_Resource(profile=profile, resource=r)
+                rp.put()
             Action(who = profile,
                    what = 'tornou-se membro do rhok bush!',
                    location = self.form.location.data).put()

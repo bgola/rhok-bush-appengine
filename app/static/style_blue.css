@@ -383,7 +383,7 @@ input.text {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 }
-#formulario input[type="text"] {
+#formulario input[type="text"],select,textarea {
 	border:solid thin #C0BEC2;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -436,10 +436,14 @@ input.text {
 	border-radius: 6px;
 	border:solid 2px #611001;
 }
+#acoes li.event {
+	background-color: #184366;
+}
 
 #acoes li a {
 	color:#F1F1F1;
 }
+
 #map_canvas {
 	width:770px;
 	height:500px;

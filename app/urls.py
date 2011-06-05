@@ -9,6 +9,11 @@ rules = [
             Rule('/sobre/', name='sobre', handler='AboutHandler')
             ]),
 
+    HandlerPrefix('volunteers.event_handlers.', [
+            Rule('/event/', name='volunteer', handler='EventMainHandler'),
+            ]),
+ 
+
     HandlerPrefix('volunteers.profile_handlers', [
             Rule('/me', name='mapa', handler='ProfileHandler'),
             ]),

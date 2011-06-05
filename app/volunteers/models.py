@@ -30,17 +30,6 @@ class Profile_Skill(db.Model):
     profile = db.ReferenceProperty(Profile)
     skill = db.ReferenceProperty(Skill)
 
-class Action(db.Model):
-    """
-    """
-    when = db.DateTimeProperty(auto_now_add = True)
-    who = db.ReferenceProperty(Profile)
-    what = db.StringProperty()
-    location = db.GeoPtProperty()
-
-    @property
-    def name(self):
-        return self.who.name
 
 class Resource(db.Model):
     """
@@ -63,4 +52,28 @@ class SMS(db.Model):
     Mensagem de SMS - manter 
     """
     pass
+
+class Event(db.Model):
+    name = db.StringProperty()
+    when = db.DateTimeProperty(auto_now_add = False)
+    what = db.StringProperty(multiline=True)
+    location = db.GeoPtProperty()
+
+class Action(db.Model):
+    """
+    """
+    when = db.DateTimeProperty(auto_now_add = True)
+    who = db.ReferenceProperty(Profile)
+    event = db.ReferenceProperty(Event)
+    what = db.StringProperty()
+    location = db.GeoPtProperty()
+
+    def is_event(self):
+        return self.who is None
+
+    @property
+    def name(self):
+        if self.who:
+            return self.who.name
+        return self.event.name
 
