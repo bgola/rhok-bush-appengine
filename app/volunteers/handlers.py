@@ -37,7 +37,8 @@ class VolunteersMainHandler(RequestHandler, Jinja2Mixin):
             )
             profile.put()
             Action(who = profile,
-                   what = 'tornou-se membro do rhok bush!').put()
+                   what = 'tornou-se membro do rhok bush!',
+                   location = self.form.location.data).put()
             return redirect('/')
         return self.get(**kwargs)
 
@@ -49,3 +50,11 @@ class MapMainHandler(RequestHandler, Jinja2Mixin):
     def get(self):
         return self.render_response('mapa.html')
 
+
+class AboutHandler(RequestHandler, Jinja2Mixin):
+    def get(self):
+        recent_actions = [ {'when': a.when, 
+                            'name':a.name, 
+                            'what': a.what} 
+                           for a in Action.all().order('-when').fetch(10) ]
+        return self.render_response('about.html', recent_actions = recent_actions)
